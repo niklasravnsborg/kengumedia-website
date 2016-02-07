@@ -1,0 +1,6 @@
+{
+	"host":     "ssh.yourhost.com",
+	"username": "ssh_username",
+	"password": "ssh_password",
+	"deployTo": "deploy/to/this/directory"
+}
