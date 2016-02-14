@@ -1,10 +1,14 @@
 ErrorDocument 404 /404/
 
 RewriteEngine On
-
-# don't redirect on local
-RewriteCond %{HTTP_HOST} !\.dev$
+RewriteOptions Inherit
 
 # redirect non-www to www
+RewriteCond %{HTTP_HOST} !\.dev$
 RewriteCond %{HTTP_HOST} !^www\.
-RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+RewriteRule (.*) https://www.%{HTTP_HOST}/$1 [R=301,L]
+
+# redirect to https
+RewriteCond %{HTTP_HOST} !\.dev$
+RewriteCond %{HTTPS} !on
+RewriteRule (.*) https://%{HTTP_HOST}/$1 [R=301]
